@@ -12,8 +12,34 @@
 
 ActiveRecord::Schema.define(version: 2019_08_19_144704) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "renter_id"
+    t.bigint "garden_id"
+    t.integer "price"
+    t.string "status"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_bookings_on_garden_id"
+    t.index ["renter_id"], name: "index_bookings_on_renter_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.integer "price"
+    t.integer "capacity"
+    t.string "address"
+    t.bigint "owner_id"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["owner_id"], name: "index_gardens_on_owner_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +53,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_144704) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "bookings", "gardens"
+  add_foreign_key "bookings", "users", column: "renter_id"
+  add_foreign_key "gardens", "users", column: "owner_id"
 end
