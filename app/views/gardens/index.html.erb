@@ -1,3 +1,4 @@
+<h1>Search page</h1>
 
 <div class="cards">
   <% @gardens.each do |garden| %>
@@ -11,5 +12,8 @@
       <h2 class="card-garden-pricing"><%= garden.price %></h2>
     </div>
   </div>
+  <%= link_to 'Show garden', garden_path(garden) %>
   <% end %>
 </div>
+
+<%= link_to 'Create a garden', new_garden_path %>
