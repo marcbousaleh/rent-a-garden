@@ -15,7 +15,7 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(garden_params)
     @garden.owner = current_user
-    if @garden.save!
+    if @garden.save
       redirect_to garden_path(@garden)
     else
       render :new
