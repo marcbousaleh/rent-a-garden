@@ -16,6 +16,14 @@
   background-color: #FE6600;
 }
 
+.btn-basic > input[type="submit"] {
+  color: red;
+  :hover{
+    color: #000000;
+  }
+}
+
+
 .login-link a {
   color: #FE6600 !important;
 }
