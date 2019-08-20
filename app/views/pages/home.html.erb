@@ -1,5 +1,19 @@
 <div class="my-container">
   <h1>Rent-A-Garden</h1>
   <p>Find me in app/views/pages/home.html.erb</p>
+  <div class="cards">
+    <div class="card-garden">
+    <img src=<%= @garden.photo %>/>
+    <div class="card-garden-infos">
+      <div>
+        <h2>Basic Garden</h2>
+        <p><%= @garden.description %></p>
+      </div>
+      <h2 class="card-garden-pricing">£9.99/hr</h2>
+    </div>
+  </div>
 </div>
+
+</div>
+
 
