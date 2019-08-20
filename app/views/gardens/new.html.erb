@@ -1,0 +1,8 @@
+<h1>New garden form</h1>
+<%= simple_form_for @garden do |f| %>
+  <%= f.input :price %>
+  <%= f.input :capacity %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>

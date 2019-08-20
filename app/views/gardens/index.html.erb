@@ -1,0 +1,9 @@
+<h1>Search page</h1>
+
+<% @gardens.each do |garden| %>
+<%= link_to 'Show garden', garden_path(garden) %>
+<% end %>
+
+<p>This link ^^ will actually be a card. Right now it won't work because we don't have any data</p>
+
+<%= link_to 'Create a garden', new_garden_path %>

@@ -1,3 +1,7 @@
+<h1>Bookings page</h1>
+
 <% @bookings.each do |booking| %>
   <%= link_to 'Show garden', garden_path(booking.garden) %>
 <% end %>
+
+<p>Links will be cards for each  booking. Doesn't work now because we don't have any data</p>
