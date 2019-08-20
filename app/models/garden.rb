@@ -4,4 +4,5 @@ class Garden < ApplicationRecord
 
   validates :price, :capacity, :address, :description, :owner, presence: true
   validates :address, uniqueness: true
+  mount_uploader :photo, PhotoUploader
 end

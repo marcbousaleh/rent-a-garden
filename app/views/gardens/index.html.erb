@@ -1,0 +1,15 @@
+
+<div class="cards">
+  <% @gardens.each do |garden| %>
+    <div class="card-garden">
+    <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
+    <div class="card-garden-infos">
+      <div>
+        <h2>Basic Garden</h2>
+        <p><%= garden.description %></p>
+      </div>
+      <h2 class="card-garden-pricing"><%= garden.price %></h2>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<%= simple_form_for @garden do |f| %>
+
+  <%= f.input :photo %>
+  <%= f.input :price %>
+  <%= f.input :capacity %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit %>
+<% end %>
