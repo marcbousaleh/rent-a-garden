@@ -14,7 +14,8 @@ class GardensController < ApplicationController
 
   def create
     @garden = Garden.new(garden_params)
-    if @garden.save
+    @garden.owner = current_user
+    if @garden.save!
       redirect_to garden_path(@garden)
     else
       render :new
@@ -37,10 +38,10 @@ class GardensController < ApplicationController
   private
 
   def set_garden
-    @garden = Garden.find(params(:id))
+    @garden = Garden.find(params[:id])
   end
 
   def garden_params
-    params.require(:garden).permit(:price, :capacity, :address, :description)
+    params.require(:garden).permit(:price, :capacity, :address, :description, :photo)
   end
 end

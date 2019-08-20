@@ -1,4 +1,5 @@
 .btn-basic{
+  min-width: 50%;
   text-align: center;
   text-decoration: none;
   border: 1px solid #FE6600;
@@ -14,6 +15,14 @@
   border: 1px solid #FE6600;
   background-color: #FE6600;
 }
+
+.btn-basic > input[type="submit"] {
+  color: red;
+  :hover{
+    color: #000000;
+  }
+}
+
 
 .login-link a {
   color: #FE6600 !important;
