@@ -1,4 +1,6 @@
+
 <h1> <%= @garden.title %></h1>
+
 <div class="cards">
     <div class="card-garden">
     <%= cl_image_tag @garden.photo, height: 300, width: 400, crop: :fill %>
@@ -12,4 +14,11 @@
   </div>
 </div>
 
-<%= link_to 'Back',gardens_path %>
+<div class="login-link">
+  <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+</div>
+
+<div class="login-link">
+  <%= link_to 'Back', gardens_path %>
+</div>
+
