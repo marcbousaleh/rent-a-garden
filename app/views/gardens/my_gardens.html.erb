@@ -1,4 +1,4 @@
-<h1>Explore the gardens: </h1>
+<h1> My gardens: </h1>
 
 <div class="cards">
   <% @gardens.each do |garden| %>
@@ -24,13 +24,8 @@
     <% if policy(garden).destroy? %>
       <%= link_to 'Destroy', garden, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-
   <% end %>
 
 </div>
-
-<% if policy(Garden).new? %>
-  <%= link_to 'Create a garden', new_garden_path %>
-<% end %>
 
 <%= link_to 'Back',gardens_path %>
