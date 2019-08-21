@@ -6,30 +6,28 @@
         <%= link_to 'Explore', gardens_path, class: 'btn-basic btn-lg signup-inputs' %>
       </div>
   </div>
+  
   <div class="my-container">
     <h2 id="explore">Gardens in your area: </h2>
     <div class="cards">
       <% @gardens.each do |garden| %>
-        <div class="card-garden">
-          <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
-          <div class="card-garden-infos">
-            <div>
-              <h2><%= garden.title %></h2>
-              <p><%= garden.description %></p>
-            </div>
-            <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
-          </div>
-        </div>
         <% if policy(garden).show? %>
-          <%= link_to 'Show garden', garden_path(garden) %>
-        <% end %>
-        <% if policy(garden).edit? %>
-          <%= link_to 'Edit', garden_path(garden) %>
-        <% end %>
-        <% if policy(garden).destroy? %>
-          <%= link_to 'Destroy', garden, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to garden_path(garden), class: 'card-link' do %>
+            <div class="card-garden">
+              <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
+              <div class="card-garden-infos">
+                <div>
+                  <h2><%= garden.title %></h2>
+                  <p><%= garden.description %></p>
+                </div>
+                <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
+
