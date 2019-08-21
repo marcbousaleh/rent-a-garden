@@ -1,17 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-6"><%= simple_form_for @garden do |f| %>
-    <%= f.input :photo %>
-    <%= f.input :title %>
-    <%= f.input :price %>
-    <%= f.input :capacity %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.button :submit %>
-    <% end %>
+<div class="my-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-6"><%= simple_form_for @garden do |f| %>
+      <%= f.input :photo %>
+      <%= f.input :title %>
+      <%= f.input :price %>
+      <%= f.input :capacity %>
+      <%= f.input :address %>
+      <%= f.input :description %>
+      <%= f.input :photo_cache, as: :hidden %>
+        <div class="d-flex justify-content-center">
+          <%= f.button :submit, "Submit", class: 'btn-basic btn-lg signup-inputs'%>
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<%= link_to 'Back',gardens_path %>
+<div class="login-link">
+  <%= link_to 'Back',gardens_path %>
+</div>
+</div>
