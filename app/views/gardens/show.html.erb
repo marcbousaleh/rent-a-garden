@@ -1,28 +1,31 @@
+<div class="my-container">
+  <div class="one-card">
+      <%= cl_image_tag @garden.photo, height: 500, width: 800 %>
+  </div>
+  <div class="information">
 
-<div class="one-card">
-    <%= cl_image_tag @garden.photo, height: 500, width: 800 %>
-</div>
-<div class="information">
-
-  <h2><%= @garden.title %></h2>
-  <p><%= @garden.address %></p>
-  <p><%= @garden.description %></p>
-  <div><p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
-
-  <% if policy(@garden).edit? %>
-    <%= link_to 'Edit', edit_garden_path(@garden) %>
-  <% end %>
-  <% if policy(@garden).destroy? %>
-    <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+    <h2><%= @garden.title %></h2>
+    <p><%= @garden.address %></p>
+    <p><%= @garden.description %></p>
+    <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
+  </div>
 
 
-<div class="login-link">
-  <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
-</div>
+    <% if policy(@garden).edit? %>
+      <%= link_to 'Edit', edit_garden_path(@garden) %>
+    <% end %>
+    <% if policy(@garden).destroy? %>
+      <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 
-<div class="login-link">
-  <%= link_to 'Back', gardens_path %>
+
+  <div class="login-link">
+    <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+  </div>
+
+  <div class="login-link">
+    <%= link_to 'Back', gardens_path %>
+  </div>
 </div>
 
 
