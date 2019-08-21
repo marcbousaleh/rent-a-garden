@@ -1,3 +1,4 @@
+
 <div class="one-card">
     <%= cl_image_tag @garden.photo, height: 500, width: 800 %>
 </div>
@@ -6,8 +7,6 @@
   <p><%= @garden.address %></p>
   <p><%= @garden.description %></p>
   <div><h2 class="card-garden-pricing">$<%= @garden.price %></h2>
-    </div>
-</div>
 
 
 
@@ -17,5 +16,14 @@
   <% if policy(@garden).destroy? %>
     <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
+
+
+<div class="login-link">
+  <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+</div>
+
+<div class="login-link">
+  <%= link_to 'Back', gardens_path %>
+</div>
 
 
