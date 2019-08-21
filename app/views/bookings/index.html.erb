@@ -1,7 +1,8 @@
-<h1>Bookings page</h1>
+<h1>Your Bookings</h1>
 
 <% @bookings.each do |booking| %>
-    <p> <%= booking.garden.photo %></p>
+    <p> <%= cl_image_tag booking.garden.photo, height: 500 %></p>
+    <p>Garden ID <%= booking.garden_id %> </p>
     <p>From: <%= booking.start_date %> </p>
     <p>To: <%= booking.end_date %></p>
   <%= link_to 'Show garden', garden_path(booking.garden) %>
