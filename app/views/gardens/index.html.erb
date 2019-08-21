@@ -1,34 +1,27 @@
-<h1>Search Gardens</h1>
+<h1 class="index-head">Choose a Garden</h1>
 
 <div class="cards">
   <% @gardens.each do |garden| %>
-    <div class="card-garden">
-      <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
-      <div class="card-garden-infos">
-        <div>
-          <h2><%= garden.title %></h2>
-          <p><%= garden.description %></p>
-        </div>
-        <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
-      </div>
-    </div>
+
 
     <% if policy(garden).show? %>
-      <%= link_to 'Show garden', garden_path(garden) %>
+      <%= link_to garden_path(garden), class: 'card-link' do %>
+        <div class="card-garden">
+          <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
+          <div class="card-garden-infos">
+            <div>
+              <h2><%= garden.title %></h2>
+              <p><%= garden.description %></p>
+            </div>
+            <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
+          </div>
+        </div>
+      <% end %>
     <% end %>
 
-    <% if policy(garden).edit? %>
-      <%= link_to 'Edit', garden_path(garden) %>
-    <% end %>
-
-    <% if policy(garden).destroy? %>
-      <%= link_to 'Destroy', garden, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
 
   <% end %>
 
+
 </div>
 
-<% if policy(Garden).new? %>
-  <%= link_to 'Create a garden', new_garden_path %>
-<% end %>
