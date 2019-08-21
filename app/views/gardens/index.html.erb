@@ -3,7 +3,7 @@
 <div class="cards">
   <% @gardens.each do |garden| %>
     <div class="card-garden">
-      <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag garden.photo, height: 200, width: 300, crop: :mpad %>
       <div class="card-garden-infos">
         <div>
           <h2><%= garden.title %></h2>
