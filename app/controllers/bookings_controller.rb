@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.status = 'available'
 
     if @booking.save
-      redirect_to payment_confirmation_path
+      redirect_to booking_payment_confirmation_path(@booking)
     else
       render :new
     end

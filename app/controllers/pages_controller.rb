@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def payment_confirmation
+    @booking = Booking.find(params[:booking_id])
   end
 end
