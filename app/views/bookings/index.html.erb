@@ -1,10 +1,12 @@
-<h1>Bookings page</h1>
+<div class="my-container">
+  <h1>Bookings page</h1>
 
-<% @bookings.each do |booking| %>
-    <p>From: <%= booking.start_date %> </p>
-    <p>To: <%= booking.end_date %></p>
-  <%= link_to 'Show garden', garden_path(booking.garden) %>
-<% end %>
+  <% @bookings.each do |booking| %>
+      <p>From: <%= booking.start_date %> </p>
+      <p>To: <%= booking.end_date %></p>
+    <%= link_to 'Show garden', garden_path(booking.garden) %>
+  <% end %>
+</div>
 
 
 

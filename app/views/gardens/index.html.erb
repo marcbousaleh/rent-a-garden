@@ -1,26 +1,28 @@
-<h1 class="index-head">Choose a Garden</h1>
+<div class="my-container">
+  <h1 class="index-head">Choose a Garden</h1>
 
-<div class="cards">
-  <% @gardens.each do |garden| %>
-    <% if policy(garden).show? %>
-      <%= link_to garden_path(garden), class: 'card-link' do %>
-        <div class="card-garden">
-          <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
-          <div class="card-garden-infos">
-            <div>
-              <h2><%= garden.title %></h2>
-              <p><%= garden.description %></p>
+  <div class="cards">
+    <% @gardens.each do |garden| %>
+      <% if policy(garden).show? %>
+        <%= link_to garden_path(garden), class: 'card-link' do %>
+          <div class="card-garden">
+            <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
+            <div class="card-garden-infos">
+              <div>
+                <h2><%= garden.title %></h2>
+                <p><%= garden.description %></p>
+              </div>
+              <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
             </div>
-            <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
           </div>
-        </div>
+        <% end %>
       <% end %>
+
+
     <% end %>
 
 
-  <% end %>
+  </div>
 
-
+  <%= link_to 'Back',gardens_path %>
 </div>
-
-<%= link_to 'Back',gardens_path %>
