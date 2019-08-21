@@ -13,8 +13,8 @@
         <li class="nav-item <%= 'active' if controller_name == 'bookings' && action_name == 'index' %>">
           <%= link_to "Bookings", bookings_path, class: "nav-link" %>
         </li>
-        <li class="nav-item <%= 'active' if controller_name == 'gardens' && action_name == 'index' %>">
-          <%= link_to "My Gardens", gardens_path, class: "nav-link" %>
+        <li class="nav-item <%= 'active' if controller_name == 'gardens' && action_name == 'my_gardens' %>">
+          <%= link_to "My Gardens", my_gardens_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>

@@ -9,6 +9,11 @@ class GardenPolicy < ApplicationPolicy
     true
   end
 
+
+  def my_gardens?
+    record.all? { |garden| garden.owner == user }
+  end
+
   def show?
     true
   end
