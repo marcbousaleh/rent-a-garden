@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:index]
+  get 'my_gardens', to: 'gardens#my_gardens'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
