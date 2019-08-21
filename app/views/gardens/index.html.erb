@@ -1,7 +1,7 @@
 <h1 class="index-head">Choose a Garden</h1>
 
 <div class="cards">
-  <% @gardens.each do |garden| %>
+  <% @bookings.each do |booking| %>
     <% if policy(garden).show? %>
       <%= link_to garden_path(garden), class: 'card-link' do %>
         <div class="card-garden">
@@ -16,8 +16,6 @@
         </div>
       <% end %>
     <% end %>
-
-
   <% end %>
 
 

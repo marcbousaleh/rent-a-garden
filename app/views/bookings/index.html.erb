@@ -1,10 +1,18 @@
 <h1>Bookings page</h1>
 
-<% @bookings.each do |booking| %>
-    <p>From: <%= booking.start_date %> </p>
-    <p>To: <%= booking.end_date %></p>
-  <%= link_to 'Show garden', garden_path(booking.garden) %>
-<% end %>
-
-
-
+<div class="cards">
+  <% @bookings.each do |booking| %>
+      <%= link_to garden_path(booking.garden), class: 'card-link' do %>
+        <div class="card-garden">
+          <%= cl_image_tag booking.garden.photo, height: 300, width: 400, crop: :fill %>
+          <div class="card-garden-infos">
+            <div>
+              <h2><%= booking.garden.title %></h2>
+                 <p>Booking time: <strong><%= ((booking.end_date - booking.start_date) / 3600).round %>hrs</strong></p>
+                 <p>Total price: <strong>£<%= booking.price %></p></strong>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  <% end %>
+</div>
