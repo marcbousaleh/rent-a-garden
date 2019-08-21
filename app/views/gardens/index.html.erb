@@ -2,8 +2,6 @@
 
 <div class="cards">
   <% @gardens.each do |garden| %>
-
-
     <% if policy(garden).show? %>
       <%= link_to garden_path(garden), class: 'card-link' do %>
         <div class="card-garden">
@@ -25,3 +23,4 @@
 
 </div>
 
+<%= link_to 'Back',gardens_path %>
