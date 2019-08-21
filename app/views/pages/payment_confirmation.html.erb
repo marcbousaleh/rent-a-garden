@@ -1,3 +1,19 @@
-<h1>Payment confirmation</h1>
+<h1>Payment Confirmation</h1>
+<br>
+<div class="cards">
+<div class="container">
+  <div class="card-garden">
+    <%= cl_image_tag @booking.garden.photo, height: 100, width: 200 %>
+  </div>
+    <div class="card-garden-infos">
+      <h2><%= @booking.garden.title %></h2>
+      <h2 class="card-garden-pricing">Total: £<%= @booking.price %></h2>
+    </div>
+  </div>
 
-<%= link_to 'My Bookings', bookings_path %>
+  <div class="login-link">
+    <%= link_to 'Confirm', bookings_path %>
+    <%= link_to 'Cancel', new_garden_booking_path(@booking) %>
+  </div>
+</div>
+
