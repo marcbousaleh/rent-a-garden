@@ -9,6 +9,11 @@ class GardensController < ApplicationController
   def show
   end
 
+  def my_gardens
+    @gardens = policy_scope(Garden).where(owner: current_user)
+    authorize @gardens
+  end
+
   def new
     @garden = Garden.new
     authorize @garden
