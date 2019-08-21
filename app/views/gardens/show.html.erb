@@ -3,12 +3,11 @@
     <%= cl_image_tag @garden.photo, height: 500, width: 800 %>
 </div>
 <div class="information">
+
   <h2><%= @garden.title %></h2>
   <p><%= @garden.address %></p>
   <p><%= @garden.description %></p>
-  <div><p class="card-garden-pricing">$<%= @garden.price %></p>
-
-
+  <div><p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
 
   <% if policy(@garden).edit? %>
     <%= link_to 'Edit', edit_garden_path(@garden) %>
