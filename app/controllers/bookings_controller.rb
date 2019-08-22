@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = policy_scope(Booking)
+    bookings = policy_scope(Booking)
+    @bookings = remove_owner(bookings)
   end
 
   def new
@@ -11,8 +12,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    authorize @booking
     @booking.garden = Garden.find(params[:garden_id])
+    authorize @booking
     @booking.renter = current_user
     time = (@booking.end_date - @booking.start_date) / 3600
     @booking.price = @booking.garden.price * time
@@ -29,5 +30,11 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :garden_id)
+  end
+
+  def remove_owner(bookings)
+    bookings.reject do |booking|
+      booking.garden.owner == current_user
+    end
   end
 end
