@@ -1,34 +1,26 @@
 <div class="my-container">
-  <h1> My gardens: </h1>
+  <h1 class="marg-left"> My gardens</h1>
 
-  <div class="cards">
+  <div class="cards-container">
     <% @gardens.each do |garden| %>
-      <div class="card-garden">
-        <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
-        <div class="card-garden-infos">
-          <div>
-            <h2><%= garden.title %></h2>
-            <p><%= garden.description %></p>
-          </div>
-          <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
-        </div>
-      </div>
-
       <% if policy(garden).show? %>
-        <%= link_to 'Show garden', garden_path(garden) %>
-      <% end %>
+        <div class="col-3">
+            <%= cl_image_tag(garden.photo, height: 200) %>
+            <div class="all-owner-links">
+                <% if policy(garden).show? %>
+                  <%= link_to 'View', garden_path(garden), class: 'owner-link' %>
+                <% end %>
 
-      <% if policy(garden).edit? %>
-        <%= link_to 'Edit', garden_path(garden) %>
-      <% end %>
+                <% if policy(garden).edit? %>
+                  <%= link_to 'Edit', garden_path(garden), class: 'owner-link' %>
+                <% end %>
 
-      <% if policy(garden).destroy? %>
-        <%= link_to 'Destroy', garden, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% if policy(garden).destroy? %>
+                  <%= link_to 'Remove', garden, method: :delete, data: { confirm: 'Are you sure?' }, class: 'owner-link' %>
+                <% end %>
+            </div>
+          </div>
       <% end %>
     <% end %>
-
-  </div>
-  <div class="login-link">
-    <%= link_to 'Back',gardens_path %>
   </div>
 </div>
