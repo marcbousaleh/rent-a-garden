@@ -1,21 +1,59 @@
 <div class="show-container">
+  <main role="main">
 
+  <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="one-card">
-      <%= cl_image_tag @garden.photo, height: 500, width: 800 %>
+      <%= cl_image_tag @garden.photo, height: 800, width: 1000 %>
+      <!-- <h1 class="display-3"><%= @garden.title %></h1> -->
   </div>
 
-  <div class="information">
-    <h2><%= @garden.title %></h2>
-    <p><%= @garden.address %></p>
-    <p><%= @garden.description %></p>
-    <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="d-flex justify-content-between">
+      <div class="col-md-6">
+        <h1><%= @garden.title %></h1>
+        <p><%= @garden.address %></p>
+        <p><%= @garden.description %></p>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+          Show Garden on Map </button>
+      </div>
+      <div class="col-md-6">
+        <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
+        <p>
+          <br>
+          <br>
+        </p>
+        <button type="button" class="btn btn-warning">
+          <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+        </button>
+
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+ <!--  <div class="one-card">
+      <%= cl_image_tag @garden.photo, height: 500, width: 1000 %>
   </div>
+
+  <div class="Garden-Description">
+    <div id="information">
+      <h2><%= @garden.title %></h2>
+      <p><%= @garden.address %></p>
+      <p><%= @garden.description %></p>
+      <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
+    </div>
+  </div> -->
 
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+ <!--  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
     Show Garden on Map
-  </button>
+  </button> -->
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,10 +89,10 @@
       <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 
-  <div class="login-link">
+ <!--  <div class="login-link">
     <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
   </div>
-
+ -->
   <div class="login-link">
     <%= link_to 'Back', gardens_path %>
   </div>
