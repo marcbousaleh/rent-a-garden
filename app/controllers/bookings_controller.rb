@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = policy_scope(Booking)
+    bookings = policy_scope(Booking)
+    @bookings = remove_owner(bookings)
   end
 
   def new
@@ -32,6 +33,8 @@ class BookingsController < ApplicationController
   end
 
   def remove_owner(bookings)
-    bookings
+    bookings.reject do |booking|
+      booking.garden.owner == current_user
+    end
   end
 end
