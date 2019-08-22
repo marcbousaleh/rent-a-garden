@@ -1,24 +1,16 @@
 <div class="my-container">
-  <h1 class="marg-left"> My gardens</h1>
+  <h1 class="marg-left index-head"> My gardens</h1>
 
   <div class="cards-container">
     <% @gardens.each do |garden| %>
       <% if policy(garden).show? %>
         <div class="col-3">
+        <%= link_to garden_path(garden), class: 'card-link' do %>
             <%= cl_image_tag(garden.photo, height: 200) %>
-            <div class="all-owner-links">
-                <% if policy(garden).show? %>
-                  <%= link_to 'View', garden_path(garden), class: 'owner-link' %>
-                <% end %>
-
-                <% if policy(garden).edit? %>
-                  <%= link_to 'Edit', garden_path(garden), class: 'owner-link' %>
-                <% end %>
-
-                <% if policy(garden).destroy? %>
-                  <%= link_to 'Remove', garden, method: :delete, data: { confirm: 'Are you sure?' }, class: 'owner-link' %>
-                <% end %>
+              <div class="card-info">
+                <h5><%= garden.title %></h5>
             </div>
+        <% end %>
           </div>
       <% end %>
     <% end %>
