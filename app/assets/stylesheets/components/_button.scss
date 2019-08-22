@@ -11,11 +11,15 @@
 }
 
 .btn-basic:hover{
+  text-decoration: none;
   color: #000000 !important;
   border: 1px solid #FE6600;
   background-color: #FE6600;
 }
 
+.btn-basic:hover a {
+  color: white !important;
+}
 .btn-basic > input[type="submit"] {
   color: red;
   :hover{
@@ -26,4 +30,8 @@
 
 .login-link a {
   color: #FE6600 !important;
+}
+
+a.test-class:hover{
+  color: white !important;
 }
