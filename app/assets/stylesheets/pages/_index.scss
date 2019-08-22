@@ -3,3 +3,43 @@
 
 @import "all";
 
+
+.cards-container {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.col-3 img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.col-3 {
+  max-width: 75%;
+}
+
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  padding: 5px 2px;
+  text-decoration: none;
+}
+
+a.card-link {
+  text-decoration: none;
+}
+
+.all-owner-links {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.owner-link {
+  text-decoration: none;
+  color: black;
+}

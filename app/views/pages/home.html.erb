@@ -6,24 +6,22 @@
         <%= link_to 'Explore', gardens_path, class: 'btn-basic btn-lg signup-inputs' %>
       </div>
   </div>
-  
+
   <div class="my-container">
-    <h2 id="explore">Gardens in your area: </h2>
-    <div class="cards">
-      <% @gardens.each do |garden| %>
-        <% if policy(garden).show? %>
+    <h3 id="explore" class="marg-left">Gardens in the UK</h3>
+    <div class="cards-container">
+      <% @ukgardens = Garden.near('United Kingdom', 500) %>
+      <% @ukgardens.each do |garden| %>
+        <% if policy(garden).show? && @ukgardens %>
+          <div class="col-3">
           <%= link_to garden_path(garden), class: 'card-link' do %>
-            <div class="card-garden">
-              <%= cl_image_tag garden.photo, height: 300, width: 400, crop: :fill %>
-              <div class="card-garden-infos">
-                <div>
-                  <h2><%= garden.title %></h2>
-                  <p><%= garden.description %></p>
-                </div>
-                <h2 class="card-garden-pricing">£<%= garden.price %>/hr</h2>
+              <%= cl_image_tag(garden.photo, height: 200) %>
+                <div class="card-info">
+                  <h5><%= garden.title %></h5>
+                  <p>£<%= garden.price %>/hr</p>
               </div>
-            </div>
           <% end %>
+            </div>
         <% end %>
       <% end %>
     </div>
