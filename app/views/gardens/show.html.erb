@@ -52,12 +52,12 @@
     <% end %>
 
   <% if @garden.owner != current_user %>
-    <div class="login-link">
-      <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Book this garden', new_garden_booking_path(@garden), class: 'test-class btn-basic btn-sm mt-3 signup-inputs' %>
     </div>
   <% else %>
-    <div class="login-link">
-      <%= link_to 'Update your availabilities', new_garden_booking_path(@garden) %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Update your availabilities', new_garden_booking_path(@garden),class: 'test-class btn-basic btn-sm mt-3 signup-inputs' %>
     </div>
   <% end %>
 
@@ -65,3 +65,8 @@
     <%= link_to 'Back', gardens_path %>
   </div>
 </div>
+
+
+<!-- button div/properties for book :
+<div class="d-flex justify-content-center">
+  class: 'btn-basic btn-lg signup-inputs' -->
