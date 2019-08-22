@@ -1,3 +1,14 @@
+// .show-container{
+//   display: flex !important;
+//   align-items: center;
+//   flex-grow: 1;
+//   width: 100%;
+//   box-sizing: border-box;
+// }
+h1 {
+  font-weight: bold;
+}
+
 .one-card {
   overflow: hidden;
   background: white;
@@ -8,7 +19,7 @@
 }
 
 .one-card > img {
-  height: 500px;
+  height: 600px;
   width: 100%;
   object-fit: cover;
 }
@@ -35,6 +46,8 @@
 }
 
 .card-garden-pricing {
+  font-weight: bold;
+  font-size: 28px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
