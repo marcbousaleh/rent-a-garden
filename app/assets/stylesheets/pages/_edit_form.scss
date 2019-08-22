@@ -1,0 +1,79 @@
+.submit {
+  width: 100%;
+  height: 38px;
+  background-color: #5cb85c;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  padding: initial;
+  // line-height: 38px;
+  text-decoration: none;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+
+.form-control {
+  border-radius: 12px;
+}
+
+.custom-button {
+  background-color:  #EC2843;
+  width: 100%;
+  height: 38px;
+  padding: 20px;
+}
+
+.back-button {
+  width: 100%;
+  height: 38px;
+  background-color: rgb(254, 102, 0);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  padding: initial;
+  line-height: 38px;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+a.back-button {
+  text-decoration: none;
+
+}
+
+.destroy-button {
+  width: 100%;
+  height: 38px;
+  background-color: #f02843;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  padding: initial;
+  line-height: 38px;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+a.destroy-button {
+  text-decoration: none;
+
+}
