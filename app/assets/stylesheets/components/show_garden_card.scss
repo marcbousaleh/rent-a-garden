@@ -1,10 +1,10 @@
-.show-container{
-  display: flex !important;
-  align-items: center;
-  flex-grow: 1;
-  width: 100%;
-  box-sizing: border-box;
-}
+// .show-container{
+//   display: flex !important;
+//   align-items: center;
+//   flex-grow: 1;
+//   width: 100%;
+//   box-sizing: border-box;
+// }
 
 .one-card {
   overflow: hidden;
@@ -19,6 +19,7 @@
   height: 800px;
   width: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .one-card h2 {
