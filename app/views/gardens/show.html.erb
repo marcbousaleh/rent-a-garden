@@ -18,13 +18,18 @@
             <p><%= @garden.description %></p>
             <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
           </div>
-          <button type="button" class="btn btn-warning">
-            <%= link_to 'Book this garden', new_garden_booking_path(@garden), class: "button-booking" %>
-          </button>
-          <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-            Show Garden on Map </button> -->
+          <% if @garden.owner != current_user %>
+            <button type="button" class="btn btn-warning">
+              <%= link_to 'Book this garden', new_garden_booking_path(@garden), class: 'test-class btn-basic btn-sm mt-3 signup-inputs' %>
+            </button>
+          <% else %>
+            <button type="button" class="btn btn-warning">
+              <%= link_to 'Update your availabilities', new_garden_booking_path(@garden),class: 'test-class btn-basic btn-sm mt-3 signup-inputs' %>
+            </button>
+          <% end %>
         </div>
       </div>
+
       <div class="col-md-6" >
         <div class="h-100 d-flex flex-column justify-content-between">
           <div class="right-card"style="position: sticky; top: 0px;">
@@ -115,12 +120,12 @@
       <%= link_to 'Edit', edit_garden_path(@garden) %>
     <% end %>
 
-
- <!--  <div class="login-link">
-    <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
-  </div>
- -->
   <div class="login-link">
     <%= link_to 'Back', gardens_path %>
   </div>
 </div>
+
+
+<!-- button div/properties for book :
+<div class="d-flex justify-content-center">
+  class: 'btn-basic btn-lg signup-inputs' -->
