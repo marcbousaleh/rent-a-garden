@@ -5,6 +5,9 @@
 //   width: 100%;
 //   box-sizing: border-box;
 // }
+h1 {
+  font-weight: bold;
+}
 
 .one-card {
   overflow: hidden;
@@ -16,10 +19,9 @@
 }
 
 .one-card > img {
-  height: 800px;
+  height: 600px;
   width: 100%;
   object-fit: cover;
-  border-radius: 8px;
 }
 
 .one-card h2 {
@@ -45,6 +47,7 @@
 
 .card-garden-pricing {
   font-weight: bold;
+  font-size: 28px;
   padding: 16px;
   display: flex;
   justify-content: space-between;

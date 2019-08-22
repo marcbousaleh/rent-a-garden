@@ -1,31 +1,60 @@
-<!-- <div class="show-container"> -->
+  <div class="one-card">
+      <%= cl_image_tag @garden.photo, height: 1000, crop: :scale %>
+      <!-- <h1 class="display-3"><%= @garden.title %></h1> -->
+  </div>
+<div class="my-container">
   <main role="main">
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="one-card">
-      <%= cl_image_tag @garden.photo, height: 800, width: 1000 %>
-      <!-- <h1 class="display-3"><%= @garden.title %></h1> -->
-  </div>
 
   <div class="container">
     <!-- Example row of columns -->
     <div class="d-flex justify-content-between">
-      <div class="col-md-6">
-        <h1><%= @garden.title %></h1>
-        <p><%= @garden.address %></p>
-        <p><%= @garden.description %></p>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-          Show Garden on Map </button>
+      <div class="col-md-6 border-right">
+        <div class="h-100 d-flex flex-column justify-content-between">
+          <div>
+            <h1><%= @garden.title %></h1>
+            <h4><%= @garden.address %></h4>
+            <p><%= @garden.description %></p>
+            <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
+          </div>
+          <button type="button" class="btn btn-warning">
+            <%= link_to 'Book this garden', new_garden_booking_path(@garden), class: "button-booking" %>
+          </button>
+          <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+            Show Garden on Map </button> -->
+        </div>
       </div>
-      <div class="col-md-6">
-        <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
-        <p>
-          <br>
-          <br>
-        </p>
-        <button type="button" class="btn btn-warning">
-          <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
-        </button>
+      <div class="col-md-6" >
+        <div class="h-100 d-flex flex-column justify-content-between">
+          <div class="right-card"style="position: sticky; top: 0px;">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><%= @garden.address %></h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <div
+            id="map"
+            style="width: 100%;
+            height: 500px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          ></div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+
+
+          </div>
+
+        </div>
 
       </div>
     </div>
@@ -85,9 +114,7 @@
     <% if policy(@garden).edit? %>
       <%= link_to 'Edit', edit_garden_path(@garden) %>
     <% end %>
-    <% if policy(@garden).destroy? %>
-      <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+
 
  <!--  <div class="login-link">
     <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
