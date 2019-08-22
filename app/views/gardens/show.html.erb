@@ -51,9 +51,15 @@
       <%= link_to 'Destroy', garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 
-  <div class="login-link">
-    <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
-  </div>
+  <% if @garden.owner != current_user %>
+    <div class="login-link">
+      <%= link_to 'Book this garden', new_garden_booking_path(@garden) %>
+    </div>
+  <% else %>
+    <div class="login-link">
+      <%= link_to 'Update your availabilities', new_garden_booking_path(@garden) %>
+    </div>
+  <% end %>
 
   <div class="login-link">
     <%= link_to 'Back', gardens_path %>
