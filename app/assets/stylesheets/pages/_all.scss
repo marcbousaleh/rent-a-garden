@@ -37,3 +37,12 @@ h1 {
   font-weight: normal;
   letter-spacing: 0.1em;
 }
+
+.show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+

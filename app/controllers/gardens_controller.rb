@@ -4,9 +4,29 @@ class GardensController < ApplicationController
   def index
     @gardens = policy_scope(Garden)
     authorize @gardens
+
+    @mapgardens = Garden.geocoded
+
+    @markers = @mapgardens.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garden: garden }),
+        image_url: helpers.asset_url('seedling-solid.svg')
+      }
+    end
   end
 
   def show
+
+    @markers = [
+      {
+        lat: @garden.latitude,
+        lng: @garden.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garden: @garden }),
+        image_url: helpers.asset_url('seedling-solid.svg')
+      }
+    ]
   end
 
   def my_gardens
