@@ -14,9 +14,6 @@
         </div>
       <% end %>
         <div class="d-flex flex-column justify-content-center">
-          <%= link_to 'Back', gardens_path, class: 'back-button' %>
-        </div>
-        <div class="d-flex flex-column justify-content-center">
           <%= link_to garden_path(@garden), method: :delete, data: { confirm: 'Are you sure?' }, class: '' do  %>
             <div>
               <i class="fas fa-trash-alt fa-3x"></i>
