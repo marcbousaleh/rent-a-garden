@@ -8,7 +8,7 @@
             <%= cl_image_tag booking.garden.photo, height: 200%>
             <div class="card-info">
               <div>
-                <h6><%= booking.garden.title %></h6>
+                <h6><strong><%= booking.garden.title %></strong></h6>
                 <h6><strong>For the:</strong> <%= booking.start_date%></h6>
                 <h6><strong>Duration:</strong>  <%= ((booking.end_date - booking.start_date) / 3600).round %>hrs</h6>
                 <h6><strong>Total:</strong>£<%= booking.price %></h6>

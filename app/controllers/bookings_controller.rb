@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   def index
+    flash[:alert] = nil
     bookings = policy_scope(Booking)
     @bookings = remove_owner(bookings)
   end
@@ -12,21 +13,37 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.garden = Garden.find(params[:garden_id])
+    @garden = Garden.find(params[:garden_id])
+    @booking.garden = @garden
     authorize @booking
-    @booking.renter = current_user
-    time = (@booking.end_date - @booking.start_date) / 3600
-    @booking.price = @booking.garden.price * time
-    @booking.status = 'available'
+    add_booking_attributes(@booking)
 
-    if @booking.save
-      redirect_to bookings_path
-    else
+    if check_if_reserved?(@garden, @booking)
+      flash[:alert] = "This garden is already booked on this date"
       render :new
+    else
+      @booking.save
+      redirect_to bookings_path
     end
   end
 
   private
+
+  def check_if_reserved?(garden, booking)
+    garden.bookings.each do |reservation|
+      if ((booking.start_date > reservation.start_date) && (booking.start_date < reservation.end_date)) || ((booking.end_date > reservation.start_date) && (booking.end_date < reservation.end_date)) || ((booking.start_date < reservation.start_date) && (booking.end_date > reservation.end_date))
+        return true
+      end
+    end
+    return false
+  end
+
+  def add_booking_attributes(booking)
+    booking.renter = current_user
+    time = (booking.end_date - booking.start_date) / 3600
+    booking.price = booking.garden.price * time
+    booking.status = 'available'
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :garden_id)
