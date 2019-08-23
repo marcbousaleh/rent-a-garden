@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   def index
+    flash[:alert] = nil
     bookings = policy_scope(Booking)
     @bookings = remove_owner(bookings)
   end
@@ -15,28 +16,26 @@ class BookingsController < ApplicationController
     @garden = Garden.find(params[:garden_id])
     @booking.garden = @garden
     authorize @booking
-
-    check_if_reserved(@garden, @booking)
-
     add_booking_attributes(@booking)
 
-    if @booking.save
-      redirect_to bookings_path
-    else
+    if check_if_reserved?(@garden, @booking)
+      flash[:alert] = "This garden is already booked on this date"
       render :new
+    else
+      @booking.save
+      redirect_to bookings_path
     end
   end
 
   private
 
-  def check_if_reserved(garden, booking)
+  def check_if_reserved?(garden, booking)
     garden.bookings.each do |reservation|
-      if ((reservation.start_date < booking.start_date) && (reservation.end_date > booking.start_date)) || ((reservation.start_date < booking.end_date) && (reservation.end_date > booking.end_date)) || ((reservation.start_date > booking.start_date) && (reservation.end_date < booking.end_date))
-        flash.now[:alert] = "This garden is already booked on this date"
-        render :new
+      if ((booking.start_date > reservation.start_date) && (booking.start_date < reservation.end_date)) || ((booking.end_date > reservation.start_date) && (booking.end_date < reservation.end_date)) || ((booking.start_date < reservation.start_date) && (booking.end_date > reservation.end_date))
+        return true
       end
-      break
     end
+    return false
   end
 
   def add_booking_attributes(booking)

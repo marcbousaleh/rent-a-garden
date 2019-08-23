@@ -12,13 +12,21 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="flash flash-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
+        <p><%= alert %></p>
+        <a data-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+    <% end %>
 
       <%= yield %>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
