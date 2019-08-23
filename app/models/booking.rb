@@ -4,6 +4,6 @@ class Booking < ApplicationRecord
 
   STATUSES = %w[available unavailable]
 
-  validates :renter, :garden, :start_date, :end_date, :price, :status, presence: true
+  validates :renter, :garden, :start_date, :end_date, :price, presence: true
   validates :status, inclusion: { in: STATUSES }
 end

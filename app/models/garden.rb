@@ -1,6 +1,6 @@
 class Garden < ApplicationRecord
   belongs_to :owner, class_name: 'User'
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   validates :price, :capacity, :address, :description, :owner, :title, presence: true
   validates :address, uniqueness: true
@@ -12,8 +12,8 @@ class Garden < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_address_and_title,
-     against: [:address, :title],
-     using: {
-       tsearch: { prefix: true }
-     }
+                  against: [:address, :title],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
