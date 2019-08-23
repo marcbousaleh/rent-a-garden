@@ -1,16 +1,17 @@
 <div class="my-container">
   <h1>My Bookings</h1>
 
-  <div class="cards">
+  <div class="cards-container">
     <% @bookings.each do |booking| %>
         <%= link_to garden_path(booking.garden), class: 'card-link' do %>
-          <div class="card-garden">
-            <%= cl_image_tag booking.garden.photo, height: 300, width: 400, crop: :fill %>
-            <div class="card-garden-infos">
+          <div class="col-3">
+            <%= cl_image_tag booking.garden.photo, height: 200%>
+            <div class="card-info">
               <div>
-                <h2><%= booking.garden.title %></h2>
-                   <p>Booking time: <strong><%= ((booking.end_date - booking.start_date) / 3600).round %>hrs</strong></p>
-                   <p>Total: <strong>£<%= booking.price %></p></strong>
+                <h6><%= booking.garden.title %></h6>
+                <h6><strong>For the:</strong> <%= booking.start_date%></h6>
+                <h6><strong>Duration:</strong>  <%= ((booking.end_date - booking.start_date) / 3600).round %>hrs</h6>
+                <h6><strong>Total:</strong>£<%= booking.price %></h6>
               </div>
             </div>
           </div>
