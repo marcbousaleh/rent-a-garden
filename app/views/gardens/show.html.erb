@@ -64,8 +64,11 @@
 
 
     <% if policy(@garden).edit? %>
-      <%= link_to 'Edit', edit_garden_path(@garden) %>
+    <i>
+      <%= link_to'', edit_garden_path(@garden), class: "far fa-edit" %>
     <% end %>
+    </i>
+
 </div>
 
 
