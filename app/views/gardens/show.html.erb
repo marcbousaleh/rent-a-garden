@@ -18,6 +18,20 @@
             <p><%= @garden.description %></p>
             <p class="card-garden-pricing">£<%= @garden.price %>/hr</p>
           </div>
+
+          <div id="reviews">
+            <% if @garden.reviews.blank? %>
+              Be the first to leave a review for <%= @garden.title %>
+            <% else %>
+              <h2 class="margin-bottom">Reviews</h2>
+              <% @garden.reviews.each do |review| %>
+                <%= render 'reviews/show', review: review %>
+              <% end %>
+            <% end %>
+
+          </div>
+            <%= render 'reviews/form', garden: @garden, review: @review %>
+
           <% if @garden.owner != current_user %>
             <div class="link-buttons">
               <%= link_to 'Book this garden', new_garden_booking_path(@garden), class: "button-booking" %>

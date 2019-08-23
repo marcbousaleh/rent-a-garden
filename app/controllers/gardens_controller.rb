@@ -21,6 +21,9 @@ class GardensController < ApplicationController
         image_url: helpers.asset_url('seedling-solid.svg')
       }
     ]
+
+    @review = Review.new
+    authorize @review
   end
 
   def my_gardens

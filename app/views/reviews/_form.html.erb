@@ -1,0 +1,6 @@
+<div id="new_review">
+  <%= simple_form_for([garden, review], remote: true) do |form| %>
+    <%= form.input :content, as: :text %>
+    <%= form.button :submit, class: 'review-link no-m-left margin-bottom' %>
+  <% end %>
+</div>
