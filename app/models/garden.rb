@@ -1,6 +1,7 @@
 class Garden < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many :bookings
+  has_many :reviews, dependent: :destroy
 
   validates :price, :capacity, :address, :description, :owner, :title, presence: true
   validates :address, uniqueness: true

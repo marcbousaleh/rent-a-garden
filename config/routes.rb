@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :gardens, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: :create
   end
   resources :bookings, only: [:index]
   get 'my_gardens', to: 'gardens#my_gardens'
