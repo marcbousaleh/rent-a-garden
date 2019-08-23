@@ -3,12 +3,17 @@
     <h1> Rent a garden </h1>
     <p>Gardens for everybody</p>
       <div class="d-flex justify-content-center">
-        <%= link_to 'Explore', gardens_path, class: 'test-class btn-basic btn-lg signup-inputs' %>
+        <%= form_tag gardens_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "search-bar-home",
+            placeholder: "Search Gardens"  %>
+        <% end %>
       </div>
   </div>
 
   <div class="my-container">
-    <h3 id="explore" class="marg-left">Gardens in the UK</h3>
+    <h3 id="explore" class="marg-left">Explore Gardens Near You</h3>
     <div class="cards-container">
       <% @ukgardens = Garden.near('United Kingdom', 500) %>
       <% @ukgardens.each do |garden| %>
