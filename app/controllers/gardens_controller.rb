@@ -5,20 +5,14 @@ class GardensController < ApplicationController
     @gardens = policy_scope(Garden)
     authorize @gardens
 
-    @mapgardens = Garden.geocoded
-
-    @markers = @mapgardens.map do |garden|
-      {
-        lat: garden.latitude,
-        lng: garden.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { garden: garden }),
-        image_url: helpers.asset_url('seedling-solid.svg')
-      }
+    if params[:query].present?
+      search_map_garden
+    else
+      map_garden
     end
   end
 
   def show
-
     @markers = [
       {
         lat: @garden.latitude,
@@ -64,6 +58,31 @@ class GardensController < ApplicationController
   end
 
   private
+
+  def map_garden
+    @mapgardens = Garden.geocoded
+
+    @markers = @mapgardens.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garden: garden }),
+        image_url: helpers.asset_url('seedling-solid.svg')
+      }
+    end
+  end
+
+  def search_map_garden
+    @mapgardens = Garden.search_by_address_and_title(params[:query])
+    @markers = @mapgardens.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garden: garden }),
+        image_url: helpers.asset_url('seedling-solid.svg')
+      }
+    end
+  end
 
   def set_garden
     @garden = Garden.find(params[:id])

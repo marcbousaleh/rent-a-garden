@@ -1,12 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
+  <div class="navbar-left">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png" %>
+      <% end %>
+
+    <% if user_signed_in? && !current_page?(root_path) %>
+      <%= form_tag gardens_path, method: :get do %>
+            <i class="fa fa-search"></i>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "search-bar",
+          placeholder: "Search Gardens"  %>
+      <% end %>
     <% end %>
+  </div>
 
-
+      <% if user_signed_in? %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
         <li class="nav-item <%= 'active' if controller_name == 'gardens' && action_name == 'index' %>">
           <%= link_to 'Find a Garden', gardens_path, class: "nav-link" %>
         </li>
