@@ -34,11 +34,11 @@
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item bullet-removal">
+          <%= link_to "Login", new_user_session_path, class: "btn-basic btn-lg signup-inputs disp-block nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Sign up","/users/sign_up", class: "nav-link" %>
+        <li class="nav-item bullet-removal">
+          <%= link_to "Sign up","/users/sign_up", class: "btn-basic btn-lg signup-inputs disp-block nav-link" %>
         </li>
       <% end %>
     </ul>
